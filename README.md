@@ -1,4 +1,4 @@
-# Here's a MERN Beer Brew Tracking app I made for my flatty
+# Here's a MERN Brewing Monitor app
 
 Technologies in use:
 * MongoDB
