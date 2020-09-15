@@ -9,10 +9,13 @@ class Navbar extends Component {
   render() { 
     return ( 
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">ExerciseTracker</Link>
+        <Link to="/" className="navbar-brand">Disaster Brewing</Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
+              <Link to="/graph" className="nav-link">Graph</Link>
+            </li>
+            {/* <li className="navbar-item">
               <Link to="/" className="nav-link">Exercises</Link>
             </li>
             <li className="navbar-item">
@@ -20,7 +23,7 @@ class Navbar extends Component {
             </li>
             <li className="navbar-item">
               <Link to="/user" className="nav-link">Create User</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
