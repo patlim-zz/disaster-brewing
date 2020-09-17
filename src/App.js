@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"
+import './styles/App.scss';
 
 import Navbar from "./components/navbar.component";
 import Home from "./components/home.component";
@@ -13,8 +13,8 @@ import Graph from "./components/graph.component";
 function App() {
   return (
     <Router>
-      <div className="container">
-        <Navbar />
+      <Navbar />
+      <div className="constrain">
         <br/>
         <Route path="/" exact component={Home} />
         <Route path="/graph" exact component={Graph} />

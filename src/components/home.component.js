@@ -37,9 +37,9 @@ function Home() {
 
   return (
     <div>
-      <h3>Data</h3>
+      <h3>Temperatures</h3>
       <table className="table">
-        <thead className="thread-light">
+        <thead>
           <tr>
             <th>timestamp</th>
             <th>temperature</th>
