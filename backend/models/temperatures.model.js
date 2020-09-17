@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const temperaturesSchema = new Schema({
-  timestamp: { type: String, required: true },
+  timestamp: { type: Date, required: true },
   temperature: { type: Number, required: true },
   hot_switch: { type: Number, required: true},
   cold_switch: { type: Number, required: true },

@@ -1,69 +1,42 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
-import * as d3 from "d3"
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 function Graph() {
-  const [test, setTest] = useState([])
+  const [data, setData] = useState([])
+  const [setpoint, setSetpoint] = useState(0)
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/temperatures")
       .then((res) => {
         if (res.data.length > 0) {
-          setTest(res.data)
+          setData(res.data.map(dataset => {
+            const d = new Date(dataset.timestamp);
+            return {
+              timestamp: months[d.getMonth()],
+              temperature: dataset.temperature,
+              hot_switch: dataset.hot_switch,
+              cold_switch: dataset.cold_switch
+            }
+          }))
+          setSetpoint(res.data[0].setpoint)
         }
       })
       .catch((err) => console.log(err))
+
   })
 
-  const ticks = useMemo(() => {
-    const xScale = d3
-      .scaleOrdinal()
-      .domain(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
-      .range(['black', '#ccc', '#ccc'])
-    return xScale.ticks().map((value) => ({
-      value,
-      xOffset: xScale(value),
-    }))
-  }, [])
-
-  // const yticks = useMemo(() => {
-  //   const yScale = d3
-  //     .scaleLeft()
-  //     .domain([17, 21])
-  //     .range([10, 290])
-  //   return yScale.ticks().map((value) => ({
-  //     value,
-  //     yOffset: yScale(value),
-  //   }))
-  // }, [])
-
   return (
-    <div className="">
-    <svg>
-      {/* {ticks.map(({ value, xOffset }) => (
-      ))} */}
-    </svg>
-
-    {/* <svg>
-      <path d="M 9.5 0.5 H 290.5" stroke="currentColor" />
-      {yticks.map(({ value, yOffset }) => (
-        <g key={value} transform={`translate(${yOffset}, 0)`}>
-          <line y2="6" stroke="currentColor" />
-          <text
-            key={value}
-            style={{
-              fontSize: "10px",
-              textAnchor: "middle",
-              transform: "translateY(20px)",
-            }}
-          >
-            {value}
-          </text>
-        </g>
-      ))}
-    </svg> */}
-    </div>
+    <LineChart width={800} height={400} data={data.slice(100,300)}>
+      <Line type="monotone" dataKey="temperature" stroke="red"/>
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
+      <XAxis dataKey="timestamp"/>
+      <YAxis domain={[18, 21]}/>
+      <Tooltip />
+    </LineChart>
   )
 }
 
