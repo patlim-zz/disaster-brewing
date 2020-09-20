@@ -1,16 +1,19 @@
 $gutter:        40px;
 $gutter-sm:     20px;
-$dark:          #343a40;
+$dark:          #171717;
+$charcoal:      #222;
 $white:         #fff;
 $grey:          #999;
 $light-grey:    #ddd;
 
 body {
   margin: 0;
+  background: $charcoal;
 }
 
 p, a, h1, h2, h3, th {
   font-family: Arial;
+  color: $white;
 }
 
 .constrain {
@@ -50,18 +53,21 @@ p, a, h1, h2, h3, th {
 
   tr {
     height: $gutter;
-    // border-bottom: 0.5px solid $grey;
-    // border-top: 0.5px solid $grey;
+    color: $white;
   }
 
   td {
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid #333;
   }
   
   th {
     text-align: left;
-    border-top: 2px solid $light-grey;
-    border-bottom: 2px solid $light-grey;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
     padding: .75rem 0;
   }
+}
+
+.recharts-wrapper {
+  margin: auto;
 }
