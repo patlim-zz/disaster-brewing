@@ -82,7 +82,7 @@ function Graph() {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="timestamp" />
       <YAxis domain={[18, 21]} />
-      <Tooltip />
+      <Tooltip/>
       <defs>
         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
           <stop offset={off} stopColor="red" stopOpacity={1} />
