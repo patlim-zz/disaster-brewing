@@ -16,6 +16,10 @@ p, a, h1, h2, h3, th {
   color: $white;
 }
 
+th {
+  color: $white;
+}
+
 .constrain {
   padding: $gutter-sm $gutter * 1.5;
   position: relative;
